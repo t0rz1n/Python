@@ -22,7 +22,9 @@ class Semestre(object):
 
     def __init__(self):
         self.id = self._ID; self.__class__._ID += 1
-        self.nome = "Semestre" + str(date.today().year) + "/" + self._semestre_nome(datetime)
+        self.nome = "Semestre" +
+                     str(date.today().year) + "/" +
+                     self._semestre_nome(datetime)
         self.alunos = []
         self.disciplinas = []
         self.data_inicio = datetime.today()

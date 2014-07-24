@@ -19,7 +19,7 @@ class Disciplina(object):
         self._vagas = Disciplina.limite_sala
         self._alunos = {}
         self.nota_1 = 0
-        self.nota_2 = 0
+		self.nota_2 = 0
     
 
     @property

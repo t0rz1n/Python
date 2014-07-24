@@ -17,7 +17,7 @@ class Docente(Pessoa):
         """
 		Método para avaliação de aluno
 		"""
-        """
+		"""
 		lista_alunos = []
 
 		if not isinstance(alunos, type([])):

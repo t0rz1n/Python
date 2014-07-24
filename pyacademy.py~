@@ -1,0 +1,5 @@
+#coding: utf-8
+
+from academy import aluno, docente, disciplina
+
+Jao = Aluno("Jão", "04/02/1923")
