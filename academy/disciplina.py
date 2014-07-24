@@ -2,24 +2,24 @@
 
 from aluno import Aluno
 from docente import Docente
+from random import randint
 
 class Disciplina(object):
 
     _ID = 1
     limite_sala = 60
     
-    def __init__(self, nome, descricao, carga, sigla):
+    def __init__(self, nome, descricao, carga, sigla, docente):
         self.id = self._ID; self.__class__._ID += 1
         self.nome = nome
         self.descricao = descricao
         self.carga = carga
         self.sigla = sigla
         self.semestre = 0
-        self.docente = []
+        self.docente = docente
         self._vagas = Disciplina.limite_sala
         self._alunos = {}
-        self.nota_1 = 0
-        self.nota_2 = 0
+        self.docente.disciplina.append(self.id)
     
 
     @property
@@ -57,7 +57,7 @@ class Disciplina(object):
         novos_alunos   = {}
 
         if isinstance(alunos, type([])):
-            lista_matricula = []
+            lista_matricula = alunos
         else:
             lista_matricula.append(alunos)
        
@@ -65,6 +65,7 @@ class Disciplina(object):
             if isinstance(aluno, Aluno):
                 if self.ocupar_vaga():
                     novos_alunos.update({aluno.id: aluno})
+                    aluno.disciplina.update({'id': self.id, 'media': 0})
             else:
                 raise TypeError("Apenas alunos podem ser matriculados \
                                  matriculados em disciplinas")
@@ -99,3 +100,33 @@ class Disciplina(object):
                 elif tipo_busca == 'matricula' and aluno.matricula == ids:
                     del self._alunos[ID]
                     self.desocupar_vaga()
+
+
+
+	
+    def avaliar(self, alunos):
+        """
+        Método para avaliação de aluno
+        """
+        lista_alunos = []
+
+        if not isinstance(alunos, type([])):
+            lista_alunos.append(alunos)
+        else:
+            lista_alunos = alunos
+        for aluno in lista_alunos:
+            if isinstance(aluno, Aluno):
+                if aluno.disciplina.get('id') == self.id:
+                    nota_1 = randint(0, 100)
+                    nota_2 = randint(0, 100)
+                    media = (nota_1+nota_2)/2
+                    aluno.disciplina.update({'media': media})
+
+
+
+
+
+
+
+
+

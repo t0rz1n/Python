@@ -12,12 +12,10 @@ class Docente(Pessoa):
         self.disciplina = []
 
 	"""
-	def avaliar(self, alunos):
-		"""
-        """
-		Método para avaliação de aluno
-		"""
-        """
+	def avaliar(self, alunos, disciplina_id):
+        
+        Método para avaliação de aluno
+		
 		lista_alunos = []
 
 		if not isinstance(alunos, type([])):
